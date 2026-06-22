@@ -1,0 +1,153 @@
+06-22 12:30:22.641  3915   635 D 3005:POSLinkAdapter:mRxBuffer:: 0000  02 50 4f 4c 2c 03 7c                              .POL,.|
+06-22 12:30:22.641  3915   635 D POSLinkMessage: LRC got: 0x7C  LRC calc: 0x7C
+06-22 12:30:22.641  3915   635 D POSLinkMessage: ValidMessage
+06-22 12:30:22.642  3915   635 D POSLinkMessage: Got 1-way message
+06-22 12:30:22.642  3915   635 W POSLinkMessage: Field 3 not in request
+06-22 12:30:22.642  3915   635 W POSLinkMessage: Field 4 not in request
+06-22 12:30:22.642  3915   635 W POSLinkMessage: Field 5 not in request
+06-22 12:30:22.642  3915   635 W POSLinkMessage: Field 6 not in request
+06-22 12:30:22.642  3915   635 W POSLinkMessage: Field 7 not in request
+06-22 12:30:22.642  3915   635 W POSLinkMessage: Field 8 not in request
+06-22 12:30:22.642  3915   635 W POSLinkMessage: Field 9 not in request
+06-22 12:30:22.642  3915   635 D POSLink:PSDKManager: 3004:setTerminalResponseListener, shortTermAcquisitionExpired: false  adapterId: 3005  mLastActiveAdapter:3004
+06-22 12:30:22.642  3915   635 D POSLink:PSDKManager: 3004:setTerminalResponseListener, mAdapterAcquisitionTime is NULL!
+06-22 12:30:22.643  3915   635 D POSLink:PSDKManager: 3004:Current mResponseListener's socket is not connected, so reassign to: 3005
+06-22 12:30:22.643  3915   635 D POSLink:PSDKManager: forceConnectionSwitchover: false  adapterId: 3005  mActiveAdapter: 3004  mLastActiveAdapter: 3004
+06-22 12:30:22.643  3915   635 D POSLink:PSDKManager: 3004: Extending mAdapterAcquisitionTime by Short term, requesting adapter was: 3005
+06-22 12:30:22.644  3915   635 D POSLink:PSDKManager: 3005:mResponseListener -> com.verifone.nz.poslinkadapter.poslink.POSLinkAdapter@2923edb  mActiveAdapter ASSIGNED
+06-22 12:30:22.644  3915   635 D POSLink:PSDKManager: 3005:mAdapterAcquisitionTime is now: 2026-06-22T00:30:22.643903Z
+06-22 12:30:22.644  3915   635 D 3005:POSLinkAdapter: allowedToContinue: true
+06-22 12:30:22.644  3915   635 D 3005:POSLinkAdapter: Allowed to proceed..
+06-22 12:30:22.644  3915   635 D 3005:POSLinkAdapter: Not an initial request, mInitialRequest -> NULL
+06-22 12:30:22.644  3915   635 D POSLink:PSDKManager: 3005:requestReceived: in PSDK (PLA) state:LOGGED_IN  Actual PSDKState:LOGGED_IN
+06-22 12:30:22.644  3915   635 D 3005:POSLinkAdapter: ensureReady..
+06-22 12:30:22.645  3915   635 D POSLink:PSDKManager: ensureReady::Logged in
+06-22 12:30:22.645  3915   635 D POSLink:PSDKManager: checkLogin, merchantIdx:
+06-22 12:30:22.645  3915   635 D POSLink:PSDKManager: checkLogin.. INVALID_MERCHANT
+06-22 12:30:22.646  3915   635 D POSLinkMessage: Field value for [MERCHANT] not found
+06-22 12:30:22.646  3915   635 D 3005:POSLinkOutputChannel: sendMessage..
+06-22 12:30:22.650  3915   635 D 3005:POSLinkOutputChannel: 0000  02 58 58 58 58 58 58 2c  50 4f 4c 2c 2c 30 37 2c  .XXXXXX,POL,,07,
+06-22 12:30:22.650  3915   635 D 3005:POSLinkOutputChannel: 0016  49 4e 56 41 4c 49 44 20  4d 45 52 43 48 41 4e 54  INVALID MERCHANT
+06-22 12:30:22.650  3915   635 D 3005:POSLinkOutputChannel: 0032  03 2c                                             .,
+06-22 12:30:23.159  3915   635 D 3005:POSLinkAdapter:mRxBuffer:: 0000  06                                                .
+06-22 12:30:23.160  3915   635 D POSLinkMessage: Got ACK for our response
+06-22 12:30:24.588  3915  2410 D POSLink:PSDKManager: initialisePSDK, state: LOGGED_IN  mFirstStatusCheck: false  mDoingVHQUpgrade: false
+06-22 12:30:29.601  3915  2410 D POSLink:PSDKManager: initialisePSDK, state: LOGGED_IN  mFirstStatusCheck: false  mDoingVHQUpgrade: false
+06-22 12:30:32.070  3915   635 D 3005:POSLinkAdapter:mRxBuffer:: 0000  02 50 55 52 2c 31 2c 32  30 30 2e 30 30 2c 30 2e  .PUR,1,200.00,0.
+06-22 12:30:32.070  3915   635 D 3005:POSLinkAdapter:mRxBuffer:: 0016  30 30 2c 03 67                                    00,.g
+06-22 12:30:32.071  3915   635 D POSLinkMessage: LRC got: 0x67  LRC calc: 0x67
+06-22 12:30:32.071  3915   635 D POSLinkMessage: ValidMessage
+06-22 12:30:32.072  3915   635 D POSLinkMessage: Got 1-way message
+06-22 12:30:32.073  3915   635 D POSLink:PSDKManager: 3005:setTerminalResponseListener, shortTermAcquisitionExpired: true  adapterId: 3005  mLastActiveAdapter:3005
+06-22 12:30:32.074  3915   635 D POSLink:PSDKManager: 3005:setTerminalResponseListener, TimeSinceAcquisition: 9430  MaxAcquisition: 3000  (Not Yielding)
+06-22 12:30:32.074  3915   635 D POSLink:PSDKManager: 3005:mResponseListener is same as requested (no need to reassign), for: 3005
+06-22 12:30:32.074  3915   635 D POSLink:PSDKManager: forceConnectionSwitchover: false  adapterId: 3005  mActiveAdapter: 3005  mLastActiveAdapter: 3005
+06-22 12:30:32.074  3915   635 D POSLink:PSDKManager: 3005: ENDED  mAdapterAcquisitionTime, requesting adapter was: 3005
+06-22 12:30:32.074  3915   635 D POSLink:PSDKManager: 3005:mAdapterAcquisitionTime is now: null
+06-22 12:30:32.074  3915   635 D 3005:POSLinkAdapter: allowedToContinue: true
+06-22 12:30:32.074  3915   635 D 3005:POSLinkAdapter: Allowed to proceed..
+06-22 12:30:32.075  3915   635 D 3005:POSLinkAdapter: SEQ REF NOW: null
+06-22 12:30:32.075  3915   635 D POSLink:PSDKManager: 3005:requestReceived: in PSDK (PLA) state:LOGGED_IN  Actual PSDKState:LOGGED_IN
+06-22 12:30:32.075  3915   635 D POSLink:PSDKManager: PSDK mInitialRequestMessage -> PUR  Seqref: null
+06-22 12:30:32.075  3915   635 D 3005:POSLinkAdapter: ensureReady..
+06-22 12:30:32.075  3915   635 D POSLink:PSDKManager: ensureReady::Logged in
+06-22 12:30:32.076  3915   635 D 3005:POSLinkAdapter: PLEASE WAIT Activity *NOT* required..
+06-22 12:30:32.100  3915   635 D POSLink:PSDKManager: isLastTxnRefSameAsCurrent, LastTxnRef:   CurrentTxnRef: null
+06-22 12:30:32.100  3915   635 D POSLink:PSDKManager: NEW_TRANSACTION..
+06-22 12:30:32.100  3915   635 D POSLink:PSDKManager: checkLogin, merchantIdx:1
+06-22 12:30:32.101  3915   635 D POSLink:PSDKManager: checkLogin.. LOGIN_SUCCESS (assumed)
+06-22 12:30:32.102  3915   635 D POSLink:PSDKManager: checkSession, Start Session, attempt #1
+06-22 12:30:32.102  3915   635 D POSLink:PSDKManager: Starting session..
+06-22 12:30:32.102  3915   635 D POSLink:PSDKManager: setPSDKState: LOGGED_IN -> WAITING_START_SESSION_RESPONSE
+06-22 12:30:32.108  3915   635 D POSLink:PSDKManager: checkSession() waiting latch..
+06-22 12:30:32.114  3528  1506 D NexoJsonRequestHandler:  to get PosCommand, parse Json: {"SaleToPOIRequest":{"MessageHeader":{"MessageClass":"Service","MessageCategory":"Admin","MessageType":"Request","ServiceID":"10","SaleID":"POSLinkNZ","POIID":"444401090007"},"AdminRequest":{"ServiceIdentification":"VF_StartSession"}}}
+06-22 12:30:32.251  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_INTERNAL"}},"ResponseRequiredFlag":"false"}],"VF_InternalData":"{\"PaymentAppState\":{\"State\":\"VF_StartSession\",\"DeviceIdKey\":\"POSLinkNZ\"}}"},"MessageHeader":{"DeviceID":"38","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007"}}}
+06-22 12:30:32.252  2663  2779 D PSDK    : 5c223a5c22504f534c696e6b4e5a5c227d7d227d2c224d657373616765486561  \":\"POSLinkNZ\"}}"},"MessageHea
+06-22 12:30:32.255  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_INTERNAL"}},"ResponseRequiredFlag":"false"}],"VF_InternalData":"{\"PaymentAppState\":{\"State\":\"VF_StartSession\",\"DeviceIdKey\":\"POSLinkNZ\"}}"},"MessageHeader":{"DeviceID":"74","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007","SaleID":"VPOS"}}}
+06-22 12:30:32.260  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_INTERNAL"}},"ResponseRequiredFlag":"false"}],"VF_InternalData":"{\"PaymentAppState\":{\"State\":\"VF_StartSession\",\"DeviceIdKey\":\"POSLinkNZ\"}}"},"MessageHeader":{"DeviceID":"24","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007","SaleID":"POSLinkNZ"}}}
+06-22 12:30:32.262  3915  1923 D POSLink::CommerceListener: NotificationEvent::Type:NOTIFICATION_EVENT NotificationType:INTERNAL  Message:null
+06-22 12:30:32.263  3915  1923 D POSLink::CommerceListener: NotificationEvent::InternalData[{"PaymentAppState":{"State":"VF_StartSession","DeviceIdKey":"POSLinkNZ"}}]
+06-22 12:30:32.263  3915  1923 D POSLink:PSDKManager: NotificationEvent::INTERNAL..
+06-22 12:30:32.263  3915  1923 D POSLink:PSDKManager: updatePosState: POSLinkNZ VF_StartSession
+06-22 12:30:32.268  3528   827 D NexoMessage: {"SaleToPOIResponse":{"AdminResponse":{"Response":{"Result":"Success"}},"MessageHeader":{"MessageCategory":"Admin","MessageClass":"Service","MessageType":"Response","POIID":"444401090007","SaleID":"POSLinkNZ","ServiceID":"10"}}}
+06-22 12:30:32.272  3915  1923 D POSLink::CommerceListener: TransactionEvent::SESSION_STARTED  Status:0  Actual PSDKState:SESSION_OPEN
+06-22 12:30:32.273  3915  1923 D POSLink:PSDKManager: setPSDKState: WAITING_START_SESSION_RESPONSE -> SESSION_STARTED
+06-22 12:30:32.273  3915   635 D POSLink:PSDKManager: checkSession() completed with: SESSION_STARTED - Session started
+06-22 12:30:32.275  3915   635 D POSLink:PSDKManager: setPSDKState: SESSION_STARTED -> TXN_IN_PROGRESS
+06-22 12:30:32.279  3915   635 D POSLink:PSDKManager: isLastTxnRefSameAsCurrent, LastTxnRef:   CurrentTxnRef: null
+06-22 12:30:32.279  3915   635 D POSLink:PSDKManager: NEW_TRANSACTION..
+06-22 12:30:32.284  3528  1506 D NexoJsonRequestHandler:  to get PosCommand, parse Json: {"SaleToPOIRequest":{"MessageHeader":{"MessageClass":"Service","MessageCategory":"Payment","MessageType":"Request","ServiceID":"11","SaleID":"POSLinkNZ","POIID":"444401090007"},"PaymentRequest":{"SaleData":{"SaleReferenceID":"7nwbiy","SaleToPOIData":"{\"PosOptions\":{\"IsPosLink\":true,\"SignatureOnPaper\":true,\"Is1Way\":true,\"AllowCredit\":true,\"AllowDebit\":true,\"AllowTip\":true,\"AllowSurcharge\":true,\"PrintReceiptOnPos\":false,\"PrintReceiptOnTerminal\":true,\"PosPasswordHashing\":false}}","SaleTransactionID":{"TransactionID":"3a8a39d0-f1e4-4379-bce9-8eb041d00934","TimeStamp":"2026-06-22T12:30:32+12:00"}},"PaymentTransaction":{"AmountsReq":{"RequestedAmount":"200","CashBackAmount":"0.00"},"TransactionConditions":{"LoyaltyHandling":"Forbidden"}},"PaymentData":{"PaymentType":"Normal"}}}}
+06-22 12:30:34.609  3915  2410 D POSLink:PSDKManager: initialisePSDK, state: TXN_IN_PROGRESS  mFirstStatusCheck: false  mDoingVHQUpgrade: false
+06-22 12:30:38.288  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_WAITING_FOR_CARD"}},"ResponseRequiredFlag":"false"},{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"Text","OutputText":[{"Text":"Awaiting Card"}]},"ResponseRequiredFlag":"false"}]},"MessageHeader":{"DeviceID":"25","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007","SaleID":"POSLinkNZ","ServiceID":"11"}}}
+06-22 12:30:38.293  3915  1923 D POSLink::CommerceListener: NotificationEvent::Type:NOTIFICATION_EVENT NotificationType:WAITING_FOR_CARD  Message:Awaiting Card
+06-22 12:30:39.611  3915  2410 D POSLink:PSDKManager: initialisePSDK, state: TXN_IN_PROGRESS  mFirstStatusCheck: false  mDoingVHQUpgrade: false
+06-22 12:30:44.275  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_INTERNAL"}},"ResponseRequiredFlag":"false"}],"VF_InternalData":"[RC]T200[ERR]Cancelled"},"MessageHeader":{"DeviceID":"26","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007","SaleID":"POSLinkNZ","ServiceID":"11"}}}
+06-22 12:30:44.278  3915  1923 D POSLink::CommerceListener: NotificationEvent::Type:NOTIFICATION_EVENT NotificationType:INTERNAL  Message:null
+06-22 12:30:44.278  3915  1923 D POSLink::CommerceListener: NotificationEvent::InternalData[[RC]T200[ERR]Cancelled]
+06-22 12:30:44.278  3915  1923 D POSLink:PSDKManager: NotificationEvent::INTERNAL..
+06-22 12:30:44.278  3915  1923 D POSLink::CommerceListener: NotificationEvent::INTERNAL.. looking for tags
+06-22 12:30:44.278  3915  1923 D POSLink:PSDKManager: TAG:RC
+06-22 12:30:44.278  3915  1923 D POSLink:PSDKManager: Gsc/Terminal RespCode now:T200
+06-22 12:30:44.278  3915  1923 D TxnState: inferPOSLinkResponseCodeFromTerminalResponseCode: RC04_TRANS_CANCELLED  responseCode: ERROR_INTERNAL_USER_CANCELLED
+06-22 12:30:44.278  3915  1923 D POSLink:PSDKManager: POSLink RespCode now:04
+06-22 12:30:44.285  3915  1923 D POSLink:PSDKManager: TAG:ERR
+06-22 12:30:44.286  3915  1923 D POSLink:PSDKManager: Gsc/Terminal RespText now:Cancelled
+06-22 12:30:44.522  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_TRANSACTION_OUTCOME"}},"ResponseRequiredFlag":"false"},{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"Text","OutputText":[{"Text":"Transaction Cancelled"}]},"ResponseRequiredFlag":"false"}]},"MessageHeader":{"DeviceID":"27","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007","SaleID":"POSLinkNZ","ServiceID":"11"}}}
+06-22 12:30:44.526  3915  1923 D POSLink::CommerceListener: NotificationEvent::Type:NOTIFICATION_EVENT NotificationType:TRANSACTION_OUTCOME  Message:Transaction Cancelled
+06-22 12:30:44.616  3915  2410 D POSLink:PSDKManager: initialisePSDK, state: TXN_IN_PROGRESS  mFirstStatusCheck: false  mDoingVHQUpgrade: false
+06-22 12:30:44.666  3528  1593 D NexoMessage: {"SaleToPOIResponse":{"MessageHeader":{"MessageCategory":"Payment","MessageClass":"Service","MessageType":"Response","POIID":"444401090007","SaleID":"POSLinkNZ","ServiceID":"11"},"PaymentResponse":{"POIData":{"POITransactionID":{"TimeStamp":"2026-06-22T12:30:32+12:00","TransactionID":"000111"}},"PaymentResult":{"VF_AllowedPaymentOperations":[],"AmountsResp":{"AuthorizedAmount":"0","CashbackAmount":"0","Currency":"NZD","VF_DonationAmount":"0","VF_FsaAmounts":{"AmountClinic":"0","AmountDental":"0","AmountHealthcare":"0","AmountPrescription":"0","AmountVision":"0"},"VF_FsaAuthorizedAmount":"0","VF_DiffAmountDue":"0","VF_PosTotalAdjustmentAmount":"0","Taxes":[{"Amount":"0","TaxCode":""}],"TipAmount":"0","TotalFeesAmount":"0"},"AuthenticationMethod":"Bypass","VF_EventLog":[],"OnlineFlag":false,"VF_OrderType":"POS","PaymentAcquirerData":{"AcquirerPOIID":"0007","AcquirerTransactionID":{"TimeStamp":"2026-06-22T12:30:32+12:00","TransactionID":"221230000111"},"MerchantID":"44440109"},"VF_PaymentHostData":{"ApprovalCode":"T200"},"PaymentType":"Normal","VF_PaymentAcquirerData":{"AcquirerTransactionID":{"TimeStamp":"2026-06-22T12:30:32+12:00","TransactionID":"221230000111"}}},"Response":{"AdditionalResponse":"Transaction Cancelled.","ErrorCondition":"Cancel","Result":"Failure"},"SaleData":{"OperatorID":"username","SaleReferenceID":"7nwbiy","SaleToPOIData":"{\"PosOptions\":{\"IsPosLink\":true,\"SignatureOnPaper\":true,\"Is1Way\":true,\"AllowCredit\":true,\"AllowDebit\":true,\"AllowTip\":true,\"AllowSurcharge\":true,\"PrintReceiptOnPos\":false,\"PrintReceiptOnTerminal\":true,\"PosPasswordHashing\":false}}","SaleTransactionID":{"TimeStamp":"2026-06-22T12:30:32+12:00","TransactionID":"3a8a39d0-f1e4-4379-bce9-8eb041d00934"}}}}}
+06-22 12:30:44.673  3915  1923 D POSLink:PSDKManager: setPSDKState: TXN_IN_PROGRESS -> CONNECTED
+06-22 12:30:44.673  3915  1923 D POSLink::CommerceListener: PaymentCompletedEvent::TRANSACTION_PAYMENT_COMPLETED  Status:-11  Type:TRANSACTION_PAYMENT_COMPLETED
+06-22 12:30:44.673  3915  1923 D POSLink:PSDKManager: handleFinalResponse..
+06-22 12:30:44.673  3915  1923 D POSLink:PSDKManager: Payment, isOnline: false  isForceOffline: null  getAuthResponseText(): Transaction Cancelled.  getAuthResult(): USER_CANCELLED
+06-22 12:30:44.675  3915  1923 D POSLink:PSDKManager: populatePOSLinkResponseCommon::currentResponseCode: RC04_TRANS_CANCELLED
+06-22 12:30:44.675  3915  1923 D POSLink:PSDKManager: populatePOSLinkResponseCommon::initialResponseCode: RC04_TRANS_CANCELLED
+06-22 12:30:44.675  3915  1923 D POSLink:PSDKManager: mapPSDKStatusToResponseCode, psdkStatus:-11
+06-22 12:30:44.675  3915  1923 D POSLink:PSDKManager: populatePOSLinkResponseCommon::psdkMappedResponseCode: RC04_TRANS_CANCELLED
+06-22 12:30:44.675  3915  1923 D POSLink:PSDKManager: (B) populatePOSLinkResponseCommon::Using psdkMappedResponseCode: RC04_TRANS_CANCELLED
+06-22 12:30:44.681  3915  1923 D 3005:POSLinkAdapter: RESPONSE Activity *NOT* required..
+06-22 12:30:44.687  3915  1923 D 3005:POSLinkAdapter: hideStatusActivityIfRequired..
+06-22 12:30:44.687  3915  1923 D 3005:POSLinkAdapter: hideStatusActivityIfRequired..
+06-22 12:30:44.692  3915  1923 D POSLink:PSDKManager: completeAndEndSession, mTxnState -> null
+06-22 12:30:44.692  3915  1923 D POSLink:PSDKManager: Ending session..
+06-22 12:30:44.695  3915  1923 D 3005:POSLinkAdapter: operationComplete, HANDLE_OPERATION_COMPLETE
+06-22 12:30:44.695  3915  1923 D 3005:POSLinkAdapter: operationComplete, HANDLE_OPERATION_COMPLETE  1-way, mInitialRequest -> null
+06-22 12:30:44.695  3915  1923 D POSLink:PSDKManager: operationComplete, mActiveAdapter -> 0
+06-22 12:30:44.698  3528  1506 D NexoJsonRequestHandler:  to get PosCommand, parse Json: {"SaleToPOIRequest":{"MessageHeader":{"MessageClass":"Service","MessageCategory":"Admin","MessageType":"Request","ServiceID":"12","SaleID":"POSLinkNZ","POIID":"444401090007"},"AdminRequest":{"ServiceIdentification":"VF_EndSession"}}}
+06-22 12:30:44.707  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"CarouselDisplayUpdate"}},"ResponseRequiredFlag":"false"},{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"Text","OutputText":[{"Text":"Please Wait…"}]},"ResponseRequiredFlag":"false"}]},"MessageHeader":{"DeviceID":"28","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007","SaleID":"POSLinkNZ","ServiceID":"12"}}}
+06-22 12:30:44.709  3915  1923 D POSLink::CommerceListener: TransactionEvent::TRANSACTION_NOTIFICATION  Status:0  Actual PSDKState:AWAITING_TERMINAL
+06-22 12:30:44.709  3915  1923 D POSLink::CommerceListener: TRANSACTION_NOTIFICATION: Please Wait…
+06-22 12:30:46.336  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_INTERNAL"}},"ResponseRequiredFlag":"false"}],"VF_InternalData":"{\"PaymentAppState\":{\"State\":\"VF_EndSession\",\"DeviceIdKey\":\"POSLinkNZ\"}}"},"MessageHeader":{"DeviceID":"39","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007"}}}
+06-22 12:30:46.341  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_INTERNAL"}},"ResponseRequiredFlag":"false"}],"VF_InternalData":"{\"PaymentAppState\":{\"State\":\"VF_EndSession\",\"DeviceIdKey\":\"POSLinkNZ\"}}"},"MessageHeader":{"DeviceID":"75","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007","SaleID":"VPOS"}}}
+06-22 12:30:46.342  2663  2779 D PSDK    : 3a5c22504f534c696e6b4e5a5c227d7d227d2c224d6573736167654865616465  :\"POSLinkNZ\"}}"},"MessageHeade
+06-22 12:30:46.345  3528  3731 D NexoMessage: {"SaleToPOIRequest":{"DisplayRequest":{"DisplayOutput":[{"Device":"CashierDisplay","InfoQualify":"Display","OutputContent":{"OutputFormat":"MessageRef","PredefinedContent":{"ReferenceID":"VF_INTERNAL"}},"ResponseRequiredFlag":"false"}],"VF_InternalData":"{\"PaymentAppState\":{\"State\":\"VF_EndSession\",\"DeviceIdKey\":\"POSLinkNZ\"}}"},"MessageHeader":{"DeviceID":"29","MessageCategory":"Display","MessageClass":"Device","MessageType":"Request","POIID":"444401090007","SaleID":"POSLinkNZ"}}}
+06-22 12:30:46.348  3915  1923 D POSLink::CommerceListener: NotificationEvent::Type:NOTIFICATION_EVENT NotificationType:INTERNAL  Message:null
+06-22 12:30:46.348  3915  1923 D POSLink::CommerceListener: NotificationEvent::InternalData[{"PaymentAppState":{"State":"VF_EndSession","DeviceIdKey":"POSLinkNZ"}}]
+06-22 12:30:46.348  3915  1923 D POSLink:PSDKManager: NotificationEvent::INTERNAL..
+06-22 12:30:46.348  3915  1923 D POSLink:PSDKManager: updatePosState: POSLinkNZ VF_EndSession
+06-22 12:30:46.364  3528  1663 D NexoMessage: {"SaleToPOIResponse":{"AdminResponse":{"Response":{"Result":"Success"}},"MessageHeader":{"MessageCategory":"Admin","MessageClass":"Service","MessageType":"Response","POIID":"444401090007","SaleID":"POSLinkNZ","ServiceID":"12"}}}
+06-22 12:30:46.369  3915  1923 D POSLink::CommerceListener: TransactionEvent::SESSION_ENDED  Status:0  Actual PSDKState:LOGGED_IN
+06-22 12:30:46.369  3915  1923 D POSLink:PSDKManager: setPSDKState: CONNECTED -> LOGGED_IN
+06-22 12:30:49.620  3915  2410 D POSLink:PSDKManager: initialisePSDK, state: LOGGED_IN  mFirstStatusCheck: false  mDoingVHQUpgrade: false
+06-22 12:30:50.915  3915   635 D 3005:POSLinkAdapter:mRxBuffer:: 0000  02 43 41 4e 2c 03 63                              .CAN,.c
+06-22 12:30:50.916  3915   635 D POSLinkMessage: LRC got: 0x63  LRC calc: 0x63
+06-22 12:30:50.916  3915   635 D POSLinkMessage: ValidMessage
+06-22 12:30:50.917  3915   635 D POSLinkMessage: Got 1-way message
+06-22 12:30:50.917  3915   635 D POSLink:PSDKManager: 0:setTerminalResponseListener, shortTermAcquisitionExpired: false  adapterId: 3005  mLastActiveAdapter:3005
+06-22 12:30:50.917  3915   635 D POSLink:PSDKManager: 0:setTerminalResponseListener, mAdapterAcquisitionTime is NULL!
+06-22 12:30:50.918  3915   635 D POSLink:PSDKManager: 0:mResponseListener is same as requested (no need to reassign), for: 3005
+06-22 12:30:50.918  3915   635 D POSLink:PSDKManager: forceConnectionSwitchover: false  adapterId: 3005  mActiveAdapter: 0  mLastActiveAdapter: 3005
+06-22 12:30:50.919  3915   635 D POSLink:PSDKManager: 0: ENDED  mAdapterAcquisitionTime, requesting adapter was: 3005
+06-22 12:30:50.919  3915   635 D POSLink:PSDKManager: 3005:mResponseListener -> com.verifone.nz.poslinkadapter.poslink.POSLinkAdapter@2923edb  mActiveAdapter ASSIGNED
+06-22 12:30:50.919  3915   635 D POSLink:PSDKManager: 3005:mAdapterAcquisitionTime is now: null
+06-22 12:30:50.919  3915   635 D 3005:POSLinkAdapter: allowedToContinue: true
+06-22 12:30:50.919  3915   635 D 3005:POSLinkAdapter: Allowed to proceed..
+06-22 12:30:50.919  3915   635 D 3005:POSLinkAdapter: Not an initial request, mInitialRequest -> NULL
+06-22 12:30:50.920  3915   635 D POSLink:PSDKManager: 3005:requestReceived: in PSDK (PLA) state:LOGGED_IN  Actual PSDKState:LOGGED_IN
+06-22 12:30:50.920  3915   635 D 3005:POSLinkAdapter: ensureReady..
+06-22 12:30:50.920  3915   635 D POSLink:PSDKManager: ensureReady::Logged in
+06-22 12:30:50.920  3915   635 D POSLink:PSDKManager: doCancel..
+06-22 12:30:50.920  3915   635 D POSLink:PSDKManager: doCancel: TxnState is NULL
+06-22 12:30:52.923  3915   635 D 3005:POSLinkAdapter::SocketThread: Still running..
+06-22 12:30:54.625  3915  2410 D POSLink:PSDKManager: initialisePSDK, state: LOGGED_IN  mFirstStatusCheck: false  mDoingVHQUpgrade: false
+06-22 12:30:59.630  3915  2410 D POSLink:PSDKManager: initialisePSDK, state: LOGGED_IN  mFirstStatusCheck: false  mDoingVHQUpgrade: false

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingTop="3dp"
+    android:paddingBottom="3dp"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp">
+
+    <TextView
+        android:id="@+id/tvLogTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#546E7A"
+        android:textSize="9sp"
+        android:fontFamily="monospace" />
+
+    <TextView
+        android:id="@+id/tvLogMessage"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="#8B949E"
+        android:textSize="11sp"
+        android:fontFamily="monospace"
+        android:lineSpacingMultiplier="1.2" />
+
+</LinearLayout>

@@ -1,0 +1,27 @@
+06-22 15:35:51.475  3915  3504 D POSLinkMessage: ValidMessage
+06-22 15:35:51.476  3915  3504 D POSLinkMessage: Got 1-way message
+06-22 15:35:51.477  3915  3504 D POSLinkMessage: Unhandled messagetype[Welcome!]
+06-22 15:35:51.477  3915  3504 D POSLink:PSDKManager: 3011:setTerminalResponseListener, shortTermAcquisitionExpired: true  adapterId: 3011  mLastActiveAdapter:3011
+06-22 15:35:51.478  3915  3504 D POSLink:PSDKManager: 3011:setTerminalResponseListener, TimeSinceAcquisition: 4300  MaxAcquisition: 3000  (Not Yielding)
+06-22 15:35:51.478  3915  3504 D POSLink:PSDKManager: 3011:mResponseListener is same as requested (no need to reassign), for: 3011
+06-22 15:35:51.478  3915  3504 D POSLink:PSDKManager: forceConnectionSwitchover: false  adapterId: 3011  mActiveAdapter: 3011  mLastActiveAdapter: 3011
+06-22 15:35:51.478  3915  3504 D POSLink:PSDKManager: 3011: ENDED  mAdapterAcquisitionTime, requesting adapter was: 3011
+06-22 15:35:51.479  3915  3504 D POSLink:PSDKManager: 3011:mAdapterAcquisitionTime is now: null
+06-22 15:35:51.479  3915  3504 D 3011:POSLinkAdapter: allowedToContinue: true
+06-22 15:35:51.479  3915  3504 D 3011:POSLinkAdapter: Allowed to proceed..
+06-22 15:35:51.479  3915  3504 D 3011:POSLinkAdapter: SEQ REF NOW: DSP
+06-22 15:35:51.479  3915  3504 D POSLink:PSDKManager: 3011:requestReceived: in PSDK (PLA) state:CONNECTED  Actual PSDKState:NOT_LOGGED_IN
+06-22 15:35:51.480  3915  3504 D POSLink:PSDKManager: PSDK mInitialRequestMessage -> UNK  Seqref: DSP
+06-22 15:35:51.480  3915  3504 D 3011:POSLinkAdapter: ensureReady..
+06-22 15:35:51.480  3915  3504 D POSLink:PSDKManager: ensureReady::CONNECTED..
+06-22 15:35:51.480  3915  3504 D 3011:POSLinkAdapter: PLEASE WAIT Activity *NOT* required..
+06-22 15:35:51.481  3915  3504 D POSLinkMessage: Field value for [MERCHANT] not found
+06-22 15:35:51.481  3915  3504 D POSLinkMessage: Field value for [NFO_TYPE] not found
+06-22 15:35:51.482  3915  3504 D POSLinkMessage: Field value for [NFO_DATA] not found
+06-22 15:35:51.482  3915  3504 D 3011:POSLinkOutputChannel: sendMessage..
+06-22 15:35:51.487  3915  3504 D 3011:POSLinkOutputChannel: 0000  02 44 53 50 2c 4e 46 4f  2c 2c 2c 03 03           .DSP,NFO,,,..
+06-22 15:35:51.489  3915  3504 D 3011:POSLinkAdapter: operationComplete, SEND_RESPONSE_AND_COMPLETE
+06-22 15:35:51.490  3915  3504 D 3011:POSLinkAdapter: operationComplete, PSDK Init REF: DSP  mInitialRequest SEQREF: DSP
+06-22 15:35:51.491  3915  3504 D 3011:POSLinkAdapter: operationComplete, SEND_RESPONSE_AND_COMPLETE  seq ref matches initial, so mInitialRequest -> null
+06-22 15:35:51.491  3915  3504 D POSLink:PSDKManager: operationComplete, mActiveAdapter -> 0
+06-22 15:35:51.491  3915  3504 D 3011:POSLinkAdapter: hideStatusActivityIfRequired..
