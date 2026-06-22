@@ -67,6 +67,8 @@ object PosLinkProtocol {
 
     fun poll(): ByteArray = frame("POL,1,1,")
 
+    fun pollMerchant(merchantIdx: Int): ByteArray = frame("POL,1,$merchantIdx,")
+
     fun testTransaction(): ByteArray = frame("TTX,1,")
 
     fun displayMessage(text: String, merchantIdx: Int = 1): ByteArray =

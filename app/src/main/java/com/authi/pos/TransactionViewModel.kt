@@ -4,6 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.launch
 
 class TransactionViewModel : ViewModel() {
@@ -22,6 +23,12 @@ class TransactionViewModel : ViewModel() {
     private val _lastInvoiceNo = MutableLiveData<String?>(null)
     val lastInvoiceNo: LiveData<String?> = _lastInvoiceNo
 
+    private val _merchantIdxs = MutableLiveData<List<Int>>(listOf(1))
+    val merchantIdxs: LiveData<List<Int>> = _merchantIdxs
+
+    private val _isDiscoveringMerchants = MutableLiveData(false)
+    val isDiscoveringMerchants: LiveData<Boolean> = _isDiscoveringMerchants
+
     private val socket = VerifoneSocketManager()
     private val logList = mutableListOf<LogEntry>()
 
@@ -38,7 +45,11 @@ class TransactionViewModel : ViewModel() {
                 .onSuccess {
                     _connectionStatus.value = ConnectionStatus.CONNECTED
                     log(LogLevel.SUCCESS, "Connected to $host:$port")
-                    pollTerminal()
+                    _isDiscoveringMerchants.postValue(true)
+                    val idxs = getMerchantIdxs()
+                    _merchantIdxs.postValue(idxs)
+                    _isDiscoveringMerchants.postValue(false)
+                    log(LogLevel.INFO, "Found ${idxs.size} merchant(s): $idxs")
                 }
                 .onFailure {
                     _connectionStatus.value = ConnectionStatus.DISCONNECTED
@@ -55,11 +66,11 @@ class TransactionViewModel : ViewModel() {
 
     // ── Transactions ────────────────────────────────────────────────────────
 
-    fun sendSale(amountDollars: Double, displayText: String, seqref: String) = runTx {
+    fun sendSale(amountDollars: Double, merchantIdx: Int, seqref: String) = runTx {
         currentSeqref = seqref
-        val msg = PosLinkProtocol.purchase(amountDollars, displayText = displayText, seqref = seqref)
+        val msg = PosLinkProtocol.purchase(amountDollars, merchantIdx = merchantIdx, seqref = seqref)
         val modeNote = if (seqref.isBlank()) " (1-way — no TCP response)" else " [ref: $seqref]"
-        log(LogLevel.SENT, "→ PURCHASE \$${"%.2f".format(amountDollars)}$modeNote\n${PosLinkProtocol.prettyPrint(msg)}")
+        log(LogLevel.SENT, "→ PURCHASE \$${"%.2f".format(amountDollars)} merchant=$merchantIdx$modeNote\n${PosLinkProtocol.prettyPrint(msg)}")
 
         val resp = socket.sendAndReceive(msg, 90_000) { statusText ->
             log(LogLevel.INFO, "Terminal: $statusText")
@@ -74,11 +85,11 @@ class TransactionViewModel : ViewModel() {
         handleResponse(resp, "SALE")
     }
 
-    fun sendRefund(amountDollars: Double, displayText: String, seqref: String) = runTx {
+    fun sendRefund(amountDollars: Double, merchantIdx: Int, seqref: String) = runTx {
         currentSeqref = seqref
-        val msg = PosLinkProtocol.refund(amountDollars, displayText = displayText, seqref = seqref)
+        val msg = PosLinkProtocol.refund(amountDollars, merchantIdx = merchantIdx, seqref = seqref)
         val modeNote = if (seqref.isBlank()) " (1-way)" else " [ref: $seqref]"
-        log(LogLevel.SENT, "→ REFUND \$${"%.2f".format(amountDollars)}$modeNote\n${PosLinkProtocol.prettyPrint(msg)}")
+        log(LogLevel.SENT, "→ REFUND \$${"%.2f".format(amountDollars)} merchant=$merchantIdx$modeNote\n${PosLinkProtocol.prettyPrint(msg)}")
 
         val resp = socket.sendAndReceive(msg, 90_000) { statusText ->
             log(LogLevel.INFO, "Terminal: $statusText")
@@ -177,17 +188,43 @@ class TransactionViewModel : ViewModel() {
         }
     }
 
-    private suspend fun pollTerminal() {
-        val msg = PosLinkProtocol.poll()
-        log(LogLevel.SENT, "→ POLL\n${PosLinkProtocol.prettyPrint(msg)}")
-        socket.sendAndReceive(msg, 10_000)
-            .onSuccess { raw ->
-                if (raw.isNotEmpty()) {
-                    val resp = PosLinkProtocol.parseResponse(raw)
-                    log(LogLevel.RECEIVED, "← ${PosLinkProtocol.prettyPrint(raw)}  Terminal ready (${resp.statusText})")
+    private suspend fun getMerchantIdxs(): List<Int> {
+        val found = mutableListOf<Int>()
+        for (i in 1..8) {
+            var busyRetries = 0
+            var advance = false
+            while (!advance) {
+                val msg = PosLinkProtocol.pollMerchant(i)
+                log(LogLevel.SENT, "→ POL merchant $i\n${PosLinkProtocol.prettyPrint(msg)}")
+                val result = socket.sendAndReceive(msg, 10_000)
+                if (result.isFailure) {
+                    log(LogLevel.WARNING, "Poll merchant $i: ${result.exceptionOrNull()?.message}")
+                    return if (found.isEmpty()) listOf(1) else found
+                }
+                val raw = result.getOrThrow()
+                if (raw.isEmpty()) return if (found.isEmpty()) listOf(1) else found
+                val resp = PosLinkProtocol.parseResponse(raw)
+                log(LogLevel.RECEIVED, "← ${PosLinkProtocol.prettyPrint(raw)}  [${resp.statusText}]")
+                when {
+                    resp.rawBody.contains("TERMINAL BUSY", ignoreCase = true) -> {
+                        if (++busyRetries >= 5) {
+                            log(LogLevel.WARNING, "Terminal still busy after retries, stopping merchant discovery")
+                            return if (found.isEmpty()) listOf(1) else found
+                        }
+                        log(LogLevel.INFO, "Terminal busy, retrying in 1s… (attempt $busyRetries/5)")
+                        delay(1_000)
+                    }
+                    resp.rawBody.contains("INVALID MERCHANT", ignoreCase = true) -> {
+                        return if (found.isEmpty()) listOf(1) else found
+                    }
+                    else -> {
+                        found.add(i)
+                        advance = true
+                    }
                 }
             }
-            .onFailure { log(LogLevel.WARNING, "Poll: ${it.message} (may be normal if terminal ignores POL)") }
+        }
+        return if (found.isEmpty()) listOf(1) else found
     }
 
     private fun log(level: LogLevel, message: String) {

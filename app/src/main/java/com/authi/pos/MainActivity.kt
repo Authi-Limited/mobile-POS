@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.Bundle
 import android.text.InputType
 import android.view.View
+import android.widget.ArrayAdapter
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.viewModels
@@ -17,6 +18,8 @@ class MainActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private val vm: TransactionViewModel by viewModels()
     private val logAdapter = LogAdapter()
+    private var merchantIdxs = listOf(1)
+    private var selectedMerchantIdx = 1
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -52,11 +55,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnSale.setOnClickListener {
             val amount = validatedAmount() ?: return@setOnClickListener
-            vm.sendSale(
-                amount,
-                binding.etDescription.text.toString().trim(),
-                binding.etSeqRef.text.toString().trim()
-            )
+            vm.sendSale(amount, selectedMerchantIdx, binding.etSeqRef.text.toString().trim())
         }
 
         binding.btnVoid.setOnClickListener {
@@ -72,11 +71,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnRefund.setOnClickListener {
             val amount = validatedAmount() ?: return@setOnClickListener
-            vm.sendRefund(
-                amount,
-                binding.etDescription.text.toString().trim(),
-                binding.etSeqRef.text.toString().trim()
-            )
+            vm.sendRefund(amount, selectedMerchantIdx, binding.etSeqRef.text.toString().trim())
         }
 
         binding.btnSettlement.setOnClickListener {
@@ -133,6 +128,23 @@ class MainActivity : AppCompatActivity() {
             val connected = vm.connectionStatus.value == TransactionViewModel.ConnectionStatus.CONNECTED
             setTxButtonsEnabled(connected && !busy)
             binding.btnCancel.isEnabled = busy && connected
+        }
+
+        vm.isDiscoveringMerchants.observe(this) { discovering ->
+            binding.tilMerchantIdx.isEnabled = !discovering
+            if (discovering) binding.spinnerMerchant.setText("Discovering…", false)
+        }
+
+        vm.merchantIdxs.observe(this) { idxs ->
+            merchantIdxs = idxs
+            selectedMerchantIdx = idxs.first()
+            val labels = idxs.map { "Merchant $it" }
+            val adapter = ArrayAdapter(this, android.R.layout.simple_dropdown_item_1line, labels)
+            binding.spinnerMerchant.setAdapter(adapter)
+            binding.spinnerMerchant.setText(labels.first(), false)
+            binding.spinnerMerchant.setOnItemClickListener { _, _, position, _ ->
+                selectedMerchantIdx = merchantIdxs[position]
+            }
         }
     }
 

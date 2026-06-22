@@ -176,17 +176,18 @@
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilMerchantIdx"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:hint="Description (optional)"
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.Dense">
+                    android:hint="Merchant"
+                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu">
 
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etDescription"
+                    <com.google.android.material.textfield.MaterialAutoCompleteTextView
+                        android:id="@+id/spinnerMerchant"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:inputType="text"
+                        android:inputType="none"
                         android:textColor="@color/text_primary"
                         android:textSize="14sp"
                         android:fontFamily="monospace" />
