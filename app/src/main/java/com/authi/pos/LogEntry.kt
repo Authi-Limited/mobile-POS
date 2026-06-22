@@ -1,4 +1,4 @@
-package com.custompos
+package com.authi.pos
 
 import java.text.SimpleDateFormat
 import java.util.Date

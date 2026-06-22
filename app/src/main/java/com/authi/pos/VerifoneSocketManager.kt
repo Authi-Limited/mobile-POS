@@ -1,4 +1,4 @@
-package com.custompos
+package com.authi.pos
 
 import android.util.Log
 import kotlinx.coroutines.Dispatchers
@@ -179,6 +179,6 @@ class VerifoneSocketManager {
     }
 
     companion object {
-        private const val TAG = "CustomPOS"
+        private const val TAG = "AuthiPOS"
     }
 }

@@ -1,4 +1,4 @@
-package com.custompos
+package com.authi.pos
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

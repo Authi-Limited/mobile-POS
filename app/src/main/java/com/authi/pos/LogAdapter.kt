@@ -1,4 +1,4 @@
-package com.custompos
+package com.authi.pos
 
 import android.graphics.Color
 import android.view.LayoutInflater

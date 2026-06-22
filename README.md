@@ -35,7 +35,7 @@ Or open the project in Android Studio and run directly on a device or emulator.
 ## Project Structure
 
 ```
-app/src/main/java/com/custompos/
+app/src/main/java/com/authi/pos/
 ├── MainActivity.kt          # UI, button wiring, SharedPreferences
 ├── TransactionViewModel.kt  # Business logic, coroutine lifecycle
 ├── VerifoneSocketManager.kt # TCP socket, POSLink frame send/receive loop

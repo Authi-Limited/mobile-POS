@@ -1,4 +1,4 @@
-package com.custompos
+package com.authi.pos
 
 /**
  * Verifone POSLink wire protocol implementation.

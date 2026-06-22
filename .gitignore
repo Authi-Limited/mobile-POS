@@ -35,3 +35,6 @@ output.json
 #NDK
 obj/
 .externalNativeBuild
+
+# signing keystore (decoded by CI from secret)
+app/keystore.jks

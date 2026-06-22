@@ -4,21 +4,34 @@ plugins {
 }
 
 android {
-    namespace 'com.custompos'
+    namespace 'com.authi.pos'
     compileSdk 36
 
     defaultConfig {
-        applicationId "com.custompos"
+        applicationId "com.authi.pos"
         minSdk 23
         targetSdk 36
-        versionCode 1
-        versionName "1.0"
+        versionCode project.hasProperty('versionCode') ? project.versionCode.toInteger() : 1
+        versionName project.hasProperty('versionName') ? project.versionName : "1.0"
+    }
+
+    signingConfigs {
+        release {
+            def keystoreFile = file("${rootProject.projectDir}/app/keystore.jks")
+            if (keystoreFile.exists() && System.getenv("KEYSTORE_PASSWORD")) {
+                storeFile keystoreFile
+                storePassword System.getenv("KEYSTORE_PASSWORD")
+                keyAlias System.getenv("KEY_ALIAS")
+                keyPassword System.getenv("KEY_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
         }
         debug {
             applicationIdSuffix ".debug"
