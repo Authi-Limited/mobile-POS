@@ -1,4 +1,4 @@
-# CustomPOS
+# AUTHI Mobile POS
 
 An Android POS application that communicates with a **Verifone V660p Plus-A (NZ)** payment terminal over TCP using the POSLink protocol.
 
