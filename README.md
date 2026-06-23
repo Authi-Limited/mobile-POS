@@ -2,6 +2,8 @@
 
 An Android POS application that communicates with a **Verifone V660p Plus-A (NZ)** payment terminal over TCP using the POSLink protocol.
 
+License: [GNU GLP-3.0](https://opensource.org/license/GPL-3.0)
+
 ## Overview
 
 CustomPOS connects to a Verifone terminal over a local network and sends POSLink commands to trigger and manage payment transactions. It receives real-time status updates and final results back from the terminal, displaying everything in a live communication log.
