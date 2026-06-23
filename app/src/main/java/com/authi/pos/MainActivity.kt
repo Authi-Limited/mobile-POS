@@ -205,24 +205,6 @@ class MainActivity : AppCompatActivity() {
             .show()
     }
 
-    private fun showInputDialog(
-        title: String, hint: String, prefill: String = "",
-        onConfirm: (String) -> Unit
-    ) {
-        val input = EditText(this).apply {
-            this.hint = hint
-            inputType = InputType.TYPE_CLASS_TEXT
-            setText(prefill)
-            setPadding(48, 24, 48, 24)
-        }
-        AlertDialog.Builder(this)
-            .setTitle(title)
-            .setView(input)
-            .setPositiveButton("OK") { _, _ -> onConfirm(input.text.toString().trim()) }
-            .setNegativeButton("Cancel", null)
-            .show()
-    }
-
     private fun saveConnectionPrefs(host: String, port: Int) {
         getSharedPreferences(PREFS, Context.MODE_PRIVATE).edit()
             .putString(KEY_IP, host)
