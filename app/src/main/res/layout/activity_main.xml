@@ -139,15 +139,38 @@
             android:orientation="vertical"
             android:padding="12dp">
 
-            <TextView
-                android:layout_width="wrap_content"
+            <LinearLayout
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="TRANSACTION"
-                android:textColor="@color/text_secondary"
-                android:textSize="11sp"
-                android:letterSpacing="0.12"
-                android:textStyle="bold"
-                android:layout_marginBottom="10dp" />
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginBottom="10dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="TRANSACTION"
+                    android:textColor="@color/text_secondary"
+                    android:textSize="11sp"
+                    android:letterSpacing="0.12"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnSettings"
+                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:minWidth="0dp"
+                    android:minHeight="0dp"
+                    android:padding="6dp"
+                    app:icon="@drawable/ic_settings"
+                    app:iconSize="20dp"
+                    app:iconGravity="textStart"
+                    app:iconPadding="0dp"
+                    android:text=""
+                    app:iconTint="@color/text_secondary" />
+            </LinearLayout>
 
             <!-- Amount + Description row -->
             <LinearLayout
@@ -288,7 +311,7 @@
                     app:backgroundTint="@color/btn_refund" />
             </LinearLayout>
 
-            <!-- Secondary action buttons: SETTLE / CANCEL / DISPLAY -->
+            <!-- Secondary action buttons: SETTLE / CANCEL -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -311,22 +334,10 @@
                     android:layout_height="40dp"
                     android:layout_weight="1"
                     android:layout_marginStart="4dp"
-                    android:layout_marginEnd="4dp"
                     android:text="CANCEL"
                     android:textSize="11sp"
                     android:enabled="false"
                     app:backgroundTint="@color/btn_danger" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnDisplayMsg"
-                    android:layout_width="0dp"
-                    android:layout_height="40dp"
-                    android:layout_weight="1"
-                    android:layout_marginStart="4dp"
-                    android:text="DISPLAY"
-                    android:textSize="11sp"
-                    android:enabled="false"
-                    app:backgroundTint="@color/btn_display" />
             </LinearLayout>
         </LinearLayout>
     </androidx.cardview.widget.CardView>

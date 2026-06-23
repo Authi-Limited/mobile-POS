@@ -3,13 +3,17 @@ package com.authi.pos
 import android.content.Context
 import android.os.Bundle
 import android.text.InputType
+import android.view.Gravity
 import android.view.View
 import android.widget.ArrayAdapter
 import android.widget.EditText
+import android.widget.LinearLayout
+import android.widget.TextView
 import android.widget.Toast
 import androidx.activity.viewModels
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SwitchCompat
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.authi.pos.databinding.ActivityMainBinding
 
@@ -20,6 +24,8 @@ class MainActivity : AppCompatActivity() {
     private val logAdapter = LogAdapter()
     private var merchantIdxs = listOf(1)
     private var selectedMerchantIdx = 1
+    private var allowCredit = true
+    private var printReceipt = true
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +61,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnSale.setOnClickListener {
             val amount = validatedAmount() ?: return@setOnClickListener
-            vm.sendSale(amount, selectedMerchantIdx, binding.etSeqRef.text.toString().trim())
+            vm.sendSale(amount, selectedMerchantIdx, binding.etSeqRef.text.toString().trim(), allowCredit, printReceipt)
         }
 
         binding.btnVoid.setOnClickListener {
@@ -85,11 +91,7 @@ class MainActivity : AppCompatActivity() {
 
         binding.btnCancel.setOnClickListener { vm.sendCancel() }
 
-        binding.btnDisplayMsg.setOnClickListener {
-            showInputDialog("Display on Terminal", "Message text", "Welcome!") { text ->
-                if (text.isNotBlank()) vm.sendDisplayMessage(text)
-            }
-        }
+        binding.btnSettings.setOnClickListener { showAdvancedSettings() }
 
         binding.btnGenerateRef.setOnClickListener {
             binding.etSeqRef.setText(System.currentTimeMillis().toString().takeLast(8))
@@ -155,7 +157,6 @@ class MainActivity : AppCompatActivity() {
         binding.btnVoid.isEnabled = enabled
         binding.btnRefund.isEnabled = enabled
         binding.btnSettlement.isEnabled = enabled
-        binding.btnDisplayMsg.isEnabled = enabled
     }
 
     private fun validatedAmount(): Double? {
@@ -164,6 +165,44 @@ class MainActivity : AppCompatActivity() {
         val value = text.toDoubleOrNull()
         if (value == null || value <= 0) { toast("Enter a valid amount > 0"); return null }
         return value
+    }
+
+    private fun showAdvancedSettings() {
+        val layout = LinearLayout(this).apply {
+            orientation = LinearLayout.VERTICAL
+            setPadding(64, 24, 64, 8)
+        }
+
+        fun addToggle(label: String, checked: Boolean): SwitchCompat {
+            val row = LinearLayout(this).apply {
+                orientation = LinearLayout.HORIZONTAL
+                gravity = Gravity.CENTER_VERTICAL
+                setPadding(0, 16, 0, 16)
+            }
+            val tv = TextView(this).apply {
+                text = label
+                textSize = 15f
+                layoutParams = LinearLayout.LayoutParams(0, LinearLayout.LayoutParams.WRAP_CONTENT, 1f)
+            }
+            val sw = SwitchCompat(this).apply { isChecked = checked }
+            row.addView(tv)
+            row.addView(sw)
+            layout.addView(row)
+            return sw
+        }
+
+        val swAllowCredit = addToggle("Allow Credit", allowCredit)
+        val swPrintReceipt = addToggle("Print Receipt", printReceipt)
+
+        AlertDialog.Builder(this)
+            .setTitle("Advanced Settings")
+            .setView(layout)
+            .setPositiveButton("Done") { _, _ ->
+                allowCredit = swAllowCredit.isChecked
+                printReceipt = swPrintReceipt.isChecked
+            }
+            .setNegativeButton("Cancel", null)
+            .show()
     }
 
     private fun showInputDialog(

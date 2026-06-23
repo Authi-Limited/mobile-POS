@@ -66,11 +66,14 @@ class TransactionViewModel : ViewModel() {
 
     // ── Transactions ────────────────────────────────────────────────────────
 
-    fun sendSale(amountDollars: Double, merchantIdx: Int, seqref: String) = runTx {
+    fun sendSale(amountDollars: Double, merchantIdx: Int, seqref: String,
+                 allowCredit: Boolean = true, printReceipt: Boolean = true) = runTx {
         currentSeqref = seqref
-        val msg = PosLinkProtocol.purchase(amountDollars, merchantIdx = merchantIdx, seqref = seqref)
+        val msg = PosLinkProtocol.purchase(amountDollars, merchantIdx = merchantIdx, seqref = seqref,
+            allowCredit = allowCredit, returnReceipt = printReceipt)
         val modeNote = if (seqref.isBlank()) " (1-way — no TCP response)" else " [ref: $seqref]"
-        log(LogLevel.SENT, "→ PURCHASE \$${"%.2f".format(amountDollars)} merchant=$merchantIdx$modeNote\n${PosLinkProtocol.prettyPrint(msg)}")
+        val flagNote = " credit=${if (allowCredit) "Y" else "N"} receipt=${if (printReceipt) "Y" else "N"}"
+        log(LogLevel.SENT, "→ PURCHASE \$${"%.2f".format(amountDollars)} merchant=$merchantIdx$modeNote$flagNote\n${PosLinkProtocol.prettyPrint(msg)}")
 
         val resp = socket.sendAndReceive(msg, 90_000) { statusText ->
             log(LogLevel.INFO, "Terminal: $statusText")
